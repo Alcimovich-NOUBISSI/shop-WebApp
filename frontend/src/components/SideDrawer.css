@@ -27,6 +27,9 @@
 
 .SideDrawer__links{
     margin: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .SideDrawer__links ul {
@@ -36,6 +39,10 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+}
+
+.SideDrawer__links ul li{
+    list-style: none;
 }
 
 .SideDrawer__links ul li a{
