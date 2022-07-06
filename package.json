@@ -12,7 +12,6 @@
     "server": "node backend/server.js",
     "client": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "runapp": "node backend/server.js",
     "data:import": "node backend/seederScript.js"
   },
   "author": "",
