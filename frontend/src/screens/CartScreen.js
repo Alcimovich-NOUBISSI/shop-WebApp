@@ -26,8 +26,8 @@ import {addToCart, removeFromCart } from "../redux/actions/cartActions";
     let d = 0;
     cartItems.map((i) => {
       d+=(i.qty*i.price)
+      return d
     })
-    return d
   }
 
   return (
