@@ -57,7 +57,7 @@ import {addToCart, removeFromCart } from "../redux/actions/cartActions";
               { <p>Total: ${getCartPrice()}</p> }
             </div>
             <div>
-              <button>Proceed To Checkout</button>
+              <button class="btn btn-primary">Proceed To Checkout</button>
             </div>
           </div>
         </div>

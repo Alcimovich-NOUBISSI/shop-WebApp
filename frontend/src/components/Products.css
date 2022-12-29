@@ -36,19 +36,9 @@
     font-size: .8rem;
 }
 
-.info__button{
-    display:block;
-    width: 90%;
-    text-decoration: none;
-    text-align: center;
-    color: #171717;
-    background: #f4f4f4;
-    padding: 8px 16px;
+.btn-primary{
+    width: 100%;
     border: 1px solid #171717;
     font-size: 1rem;
-}
-
-.info__button:hover{
-    background: black;
-    color: white;
+    margin: 0 auto !important;
 }

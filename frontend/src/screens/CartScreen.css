@@ -37,21 +37,6 @@
     padding: 8px;
 }
 
-.cartscreen__right div button{
-   padding: 10px 17px;
-   width: 100%;
-   background:white;
-   color: black;
-   border: 1px solid black;
-   cursor: pointer;
-}
-
-.cartscreen__right div button:hover{
-    background:black;
-    color: white;
-
-}
-
 @media (max-width: 960px) {
     .cartscreen{
         max-width: 800px;
@@ -62,6 +47,3 @@
         margin: 1rem;
     }
 }
-
-
-

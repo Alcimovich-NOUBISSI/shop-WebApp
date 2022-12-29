@@ -10,7 +10,7 @@ const Products = (props) => {
         />
 
         <div className="product__info">
-          <p className="info__name">{props.name}</p>
+          <p className="info__name"><b>{props.name}</b></p>
           <p className="info__description"> {props.description.substring(200,0)} 
              <Link to = {`/product/${props.Id}`} >  
              <b> more... </b> 
@@ -18,9 +18,8 @@ const Products = (props) => {
           </p>
 
           <p className="info__price">${props.price}</p>
-
-          <Link to={`/product/${props.Id}`} className="info__button">
-            View
+          <Link to={`/product/${props.Id}`} class="btn btn-primary">
+          <i class="fa fa-eye" aria-hidden="true"></i> View
           </Link>
         </div>
       </div>

@@ -17,13 +17,13 @@ app.listen(PORT, ()=>{
     console.log(`server up and running on port ${PORT}`)
 });
 
-if("production" === "production") {
-    app.use(express.static(path.join(__dirname, '/public')))
-    app.get('*', (req,res) => {
-        res.sendFile(path.join(__dirname, 'public', 'index.html' ))
-    })
-} else {
-    app.get('/', (req,res)=>{
-        res.send('Api running')
-    })
-}
+// if("production" === "production") {
+//     app.use(express.static(path.join(__dirname, '/public')))
+//     app.get('*', (req,res) => {
+//         res.sendFile(path.join(__dirname, 'public', 'index.html' ))
+//     })
+// } else {
+//     app.get('/', (req,res)=>{
+//         res.send('Api running')
+//     })
+// }

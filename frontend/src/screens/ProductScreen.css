@@ -61,14 +61,6 @@
     grid-template-columns: repeat (2, 1fr );
 }
 
-.right__info p> button{
-    grid-column: 1/-1;
-    padding: 10px 16px;
-    background: black;
-    color: white;
-    cursor: pointer;
-}
-
 .right__info select{
     padding: 10px 16px;
 }
