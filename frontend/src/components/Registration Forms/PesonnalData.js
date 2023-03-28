@@ -1,116 +1,139 @@
 import { Link } from "react-router-dom";
 import { useRef, useState } from "react";
+import axios from "axios"
 
 const Step1 = (props) => {
 
-    const fNameRef = useRef(null);
-    const lNameRef = useRef(null);
-    const emailRef = useRef(null);
-    
-    const [password, setPassword] = useState();
-    const [confirmPassword, setConfirmedPassword] = useState("");
+    const form = useRef(null)
 
+    const { fname, lname, email, password } = props.data
+
+    const [Fname, setFname] = useState(fname)
+    const [Lname, setLname] = useState(lname)
+    const [Email, setEmail] = useState(email)
+    const [Password, setPassword] = useState(password)
+    const [ConfirmPassword, setConfirmPassword] = useState("")
     const [match, checkMatch] = useState(true)
 
-    const validation = () => {
+    const sendPersonnalData = (e) => {
+        e.preventDefault()
+        // axios.post("/checkEmail", Email)
+        // .then((response) => console.log(response))
 
-        console.log(password);
-        console.log(confirmPassword);
 
-        if(
-            (fNameRef.current.value != null) && 
-            (lNameRef.current.value != null) && 
-            (emailRef.current.value != null) &&
-            (password != null) &
-            (confirmPassword != null)
-        ) {
+        var data = new FormData(form.current)
+        props.set(Object.fromEntries(data))
+
+        if (Password === ConfirmPassword) {
             props.nextClick()
+        } else {
+            checkMatch(false)
         }
     }
 
+    const [check, setCheck] = useState(true)
+    
+
     return (
-        <section class="background-radial-gradient overflow-hidden"
-            style={(props.stepNo === 0)? {"display": "block"}:{"display": "none"}}
-        >
+        <>
+            {props.stepNo === 0 ?
+                <div className="row gx-lg-5 align-items-center">
 
-            <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
-                <div class="row gx-lg-5 align-items-center mb-5">
+                    <div className="col-lg-6 mb-lg-0 center_form">
 
-                    <div class="col-lg-6 mb-5 mb-lg-0 position-relative center_form">
-                        <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
-                        <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
-
-                        <div class="card bg-glass rounded-4">
-                            <div class="card-body px-4 py-5 px-md-5">
-                                <form className="form" onSubmit={(e)=> e.preventDefault()}>
+                        <div className="card bg-glass mb-0">
+                            <div className="card-body">
+                                <form className="form"
+                                    ref={form}
+                                    onSubmit={sendPersonnalData}
+                                >
                                     <legend>Personnal Data</legend>
-                                    <div class="row">
-                                        <div class="col-md-6 mb-4">
-                                            <div class="form-outline">
-                                                <input 
-                                                    ref={fNameRef}
-                                                    type="text" 
-                                                    class="form-control" 
-                                                    placeholder="First Name" 
-                                                    required/>
+                                    <div className="row">
+                                        <div className="col-md-6 mb-4">
+                                            <div className="form-outline">
+                                                <input
+                                                    name="fname"
+                                                    value={Fname}
+                                                    onChange={(e) => setFname(e.target.value)}
+                                                    type="text"
+                                                    class="form-control"
+                                                    placeholder="First Name"
+                                                    required />
                                             </div>
                                         </div>
-                                        <div class="col-md-6 mb-4">
-                                            <div class="form-outline">
-                                                <input 
-                                                    ref={lNameRef}
-                                                    type="text" 
-                                                    class="form-control" 
-                                                    placeholder="Last Name" 
-                                                    required/>
+                                        <div className="col-md-6 mb-4">
+                                            <div className="form-outline">
+                                                <input
+                                                    name="lname"
+                                                    value={Lname}
+                                                    onChange={(e) => setLname(e.target.value)}
+                                                    type="text"
+                                                    className="form-control"
+                                                    placeholder="Last Name"
+                                                    required />
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="form-outline mb-4">
-                                        <input 
-                                            ref={emailRef}
-                                            type="email" 
-                                            class="form-control" 
-                                            placeholder="Enter your email" 
-                                            required/>
+                                    <div className="form-outline mb-4">
+                                        <input
+                                            name="email"
+                                            value={Email}
+                                            onChange={(e) => setEmail(e.target.value)}
+                                            type="email"
+                                            className="form-control"
+                                            placeholder="Enter your email"
+                                            required />
                                     </div>
 
-                                    <div class="form-outline mb-4">
-                                        <input 
-                                            onChange={(e)=> setPassword(e.target.value)}
-                                            type="password" 
-                                            class="form-control" 
-                                            placeholder="Enter your password" 
-                                            required/>
+                                    <div className="form-outline mb-4">
+                                        <input
+                                            type="password"
+                                            name="password"
+                                            value={Password}
+                                            onChange={(e) => setPassword(e.target.value)}
+                                            className="form-control"
+                                            placeholder="Enter your password"
+                                            required />
                                     </div>
 
-                                    <div class="form-outline mb-4">
-                                        <input 
-                                            onChange={(e)=> setConfirmedPassword(e.target.value)}
-                                            type="password" 
-                                            class="form-control" 
-                                            placeholder="Confirm your password" 
-                                            required/>
-                                        <label style = {(match === false)? {"display":"block"}:{"display":"none"} }  > *passwords don't match</label>
+                                    <div className="form-outline mb-4">
+                                        <input
+                                            type="password"
+                                            onChange={(e) => setConfirmPassword(e.target.value)}
+                                            className="form-control"
+                                            placeholder="Confirm your password"
+                                            required />
+                                        <small style={(match === false) ? { "display": "block", "textAlign": "left" } : { "display": "none" }}  >*passwords don't match</small>
                                     </div>
 
-                                    <div class="form-outline mb-4 col text-end">
-                                        <button 
-                                            type="submit" 
-                                            class="btn btn-primary mb-4 w-50" 
-                                            onClick={()=> { validation() }}
-                                            >
+                                    <div className="form-outline mb-4 col text-end">
+                                        <button
+                                            type="submit"
+                                            className="btn btn-primary mb-4 w-50"
+                                        >
                                             Continue
                                         </button>
+                                        {/* <button 
+                                                type="submit" 
+                                                class="btn btn-primary mb-4 w-50" 
+                                                >
+                                                Continue
+                                            </button> */}
                                     </div>
 
-                                    <div class="row align-items-end mt-5">
-                                        <div class="col-md-6 text-start">
-                                            <span>Already have an account? <Link to="/login"> Sign In </Link> </span>
+                                    <div className="">
+                                        <div className=" text-start">
+                                            <label>Already have an account? <Link to="/login"> Sign In </Link> </label>
                                         </div>
-                                        <div class="col-md-6 text-end">
-                                            <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" />
+                                        <div className="text-end">
+                                            <input 
+                                                class="form-check-input me-2" 
+                                                type="checkbox" 
+                                                value="" 
+                                                id="form2Example33"
+                                                onClick={()=> setCheck(!check)} 
+                                                checked = {check} />
                                             <label class="form-check-label" for="form2Example33">
                                                 Subscribe to our newsletter
                                             </label>
@@ -122,9 +145,9 @@ const Step1 = (props) => {
                         </div>
 
                     </div>
-                </div>
-            </div>
-        </section>
+                </div> : null
+            }
+        </>
     )
 }
 

@@ -10,21 +10,25 @@ const Navbar = (props) => {
 
   return (
     <>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
       <div class="container-fluid">
-        <Link class="navbar-brand col-2" to="/">Online Shop</Link>
-        <form class="d-flex col-6">
+        <Link class="navbar-brand col-3" to="/">Online Shop</Link>
+        <form id="search1" class="d-flex col-6" style={{"visibility": "none !important"}} >
             <input class="form-control" type="search" placeholder="Enter a keyword..."/>
             <button class="btn btn-dark my-2 my-sm-0" type="submit">Search</button>
         </form>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <button 
+          class="navbar-toggler" 
+          type="button"
+          onClick={() => props.handleClick()}
+        >
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarColor01">
           <ul class="navbar-nav">
-            <li class="nav-item row align-items-center" >
+            {/* <li class="nav-item row align-items-center" >
               <Link to="/cart">
-                    <span class="fa-stack fa-1x has-badge" data-count={cartItems.length}>
+                    <span class="fa-stack fa-1x has-badge" data-count="0">
                     <i class="fa fa-stack-1x fa-bell red-cart"></i>
                     </span>
               </Link>
@@ -37,9 +41,11 @@ const Navbar = (props) => {
                       <i class="fa fa-shopping-cart fa-stack-1x red-cart"></i>
                     </span>
               </Link>
-            </li>
-            <li class="nav-item dropdown">
-              <Link to="/" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Hello Isidore !</Link>
+            </li> */}
+            <li class="nav-item mx-2"> <Link to="/login"><span class="btn btn-secondary" > Sign In</span></Link> </li>
+            <li class="nav-item"> <Link to="/register"><span class= "btn btn-outline-warning"> Register</span></Link> </li>
+            {/* <li class="nav-item dropdown">
+              <span class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Hello Isidore !</span>
               <div class="dropdown-menu">
                 <Link to="/" class="dropdown-item" href="#">Action</Link>
                 <Link to="/" class="dropdown-item" href="#">Another action</Link>
@@ -50,15 +56,11 @@ const Navbar = (props) => {
             </li>
             <li>
               <img alt="avatar" class="rounded-circle" className='avatar' src='IMG_20210829_130515.jpg' />
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>
     </nav>
-    {/* <form class="d-flex col-9 mt-2" style={{"position": "absolute"}}>
-        <input class="form-control" type="search" placeholder="Enter a keyword..."/>
-        <button class="btn btn-info my-2 my-sm-0" type="submit">Search</button>
-    </form> */}
 </>
   );
 };

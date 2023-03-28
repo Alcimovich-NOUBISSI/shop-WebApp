@@ -3,11 +3,13 @@ const mongoose = require('mongoose');
 
 const connectDB = async () => {
     try{
-        await mongoose.connect("mongodb+srv://isidore:isi_123@cluster0.moypk.mongodb.net/shopDB?retryWrites=true&w=majority",{
+        await mongoose.connect(process.env.MONGO_URI,{
              useNewUrlParser: true,
              useUnifiedTopology: true});
+             console.log(process.env.MONGO_URI);
              console.log('Connected to DB')
     } catch(err){
+        console.log(err);
             console.error('Error connecting to DB')
             process.exit(1);
     }

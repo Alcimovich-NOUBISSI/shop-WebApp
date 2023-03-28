@@ -12,9 +12,10 @@
 
 .cartscreen__left{
     flex: 0.5;
-    border-color: transparent;
-    padding: .2rem;
-    margin-left: 20px;
+    background-color: #fff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+    height: fit-content;
+    padding: 25px;
 }
 
 .cartscreen__right{
@@ -24,10 +25,6 @@
     height: fit-content;
 }
 
-.cartscreen__right div{
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-    padding: 1rem;
-}
 
 .cartscreen__right div:last-child{
     border: none;
@@ -41,9 +38,15 @@
     .cartscreen{
         max-width: 800px;
         flex-direction: column;
+        gap: 15px;
     }
 
     .cartscreen__right{
-        margin: 1rem;
+        order: 1;
     }
+
+    .cartscreen__left{
+        order: 2;
+    }
+
 }

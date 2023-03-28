@@ -1,0 +1,44 @@
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.header p {
+    margin-bottom:5px;
+}
+
+.container {
+    width: 100%;
+}
+
+.user_menu {
+    background-color: rgb(215, 207, 207);
+    width: 20%;
+    height: 100vh;
+}
+
+.user_body {
+    max-width: 80%;
+    margin-left: auto;
+    padding: 20px;
+}
+
+@media (max-width : 577px) {
+    .user_menu {
+        display: none;
+    }
+    .user_body{
+        max-width: 100%;
+    }
+    .user_option {
+        width: 100%;
+    }
+}
+
+@media (min-width : 577px) {
+    .user_option {
+        display: none;
+    }
+}

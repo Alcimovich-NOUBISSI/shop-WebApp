@@ -1,0 +1,8 @@
+.items_contaner {
+    width: 100%;
+    border: 1px solid grey;
+}
+
+.item_image img {
+    max-height: 50px;
+}

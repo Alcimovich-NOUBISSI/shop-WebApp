@@ -1,0 +1,14 @@
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.header p {
+    margin-bottom:5px;
+}
+
+.container {
+    width: 100%;
+}

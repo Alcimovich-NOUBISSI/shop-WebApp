@@ -21,7 +21,7 @@
 
   
 .red-cart {
-      color: white;
+    color: white;
 }
 
 .circle {
@@ -33,3 +33,14 @@
   border-radius: 100%;
 }
 
+.navbar {
+  position: relative;
+  z-index: 2
+}
+
+
+@media (max-width : 577px) {
+  #search1 {
+    visibility: hidden;
+  }
+}

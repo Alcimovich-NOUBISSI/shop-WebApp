@@ -14,8 +14,6 @@ const CartItem = ({ item, qtyChangeHandler, removeHandler }) => {
         <p>{item.name}</p>
       </Link>
 
-      <p className="cartitem__price"> ${item.price* item.qty}</p>
-
       <select
         className="cartitem__select"
         value={item.qty}
@@ -29,6 +27,8 @@ const CartItem = ({ item, qtyChangeHandler, removeHandler }) => {
           );
         })}
       </select>
+
+      <p className="cartitem__price"> <span class="badge bg-secondary rounded-pill">${item.price* item.qty}</span></p>
 
       <button 
       className="cartitem__deleteBtn"

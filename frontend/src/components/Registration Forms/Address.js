@@ -1,107 +1,176 @@
-import { useRef } from "react"
+import { useRef, useState } from "react"
+import Options from "../Options"
+
+import axios from "axios"
 
 
 const Step2 = (props) => {
 
-    const countryRef = useRef(null);
-    const street1Ref = useRef(null);
-    const street2Ref = useRef(null);
-    const cityRef = useRef(null);
+    
+    const form = useRef(null)
 
-    const validation = () => {
+    const { country, street1, street2, city, state, zip } = props.data
 
-        if(
-            (countryRef.current.value != null) && 
-            (street1Ref.current.value != null) && 
-            (street2Ref.current.value != null) &
-            (cityRef.current.value != null) 
-        ) {
-            props.nextClick()
-        }
+    const [Country, setCountry] = useState(country)
+    const [Street1, setStreet1] = useState(street1)
+    const [Street2, setStreet2] = useState(street2)
+    const [City, setCity] = useState(city)
+    const [State, setState] = useState(state)
+    const [Zip, setZip] = useState(zip)
+
+    const [isRequired, setRequired] = useState(true)
+
+    const sendAddress = (e) => {
+        e.preventDefault()
+        var data = new FormData(form.current)
+        props.set(Object.fromEntries(data))
+        props.nextClick()
+    }
+
+    const [countriesList, setCountriesList] = useState({})
+
+    const matchRegex = (substring) => {
+        return new RegExp(`${substring}.*?`)
+    }
+
+    var array = new Array()
+    const countries = (substring) => {
+        
+        axios.get("https://restcountries.com/v3.1/all")
+        .then((res)=> {
+            var data = res.data.filter(e => {
+                return(
+                    matchRegex(substring).test(e.name.common)
+                )
+            })
+            data.forEach(e=> {
+                array.push(e.name.common)
+                setCountriesList({...array})
+            })
+            
+        })
+        .catch((err) => console.log(err))
+    }
+
+    const handleSkip = () => {
+        setRequired(false)
+        props.nextClick()
     }
 
     return (
-        <section class="background-radial-gradient overflow-hidden"
-        style={(props.stepNo === 1)? {"display": "block"}:{"display": "none"}}
-        >
+        <>
+            {props.stepNo === 1 ?
 
-            <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
-                <div class="row gx-lg-5 align-items-center mb-5">
+                <div class="row gx-lg-5 align-items-center">
 
-                    <div class="col-lg-6 mb-5 mb-lg-0 position-relative center_form">
-                        <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
-                        <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+                    <div class="col-lg-6 mb-5 mb-lg-0 center_form">
 
-                        <div class="card bg-glass rounded-4">
-                            <div class="card-body px-4 py-5 px-md-5">
-                                <form className="form" onSubmit={(e)=> e.preventDefault()}>
+                        <div class="card bg-glass mt-2 mb-0">
+                            <div class="card-body">
+                                <form className="form"
+                                    ref={form}
+                                    onSubmit={sendAddress}
+                                >
+                                    <button type="button" onClick={() => handleSkip()} >Skip for now</button>
                                     <legend> Address</legend>
 
-                                    <div class="form-outline mb-4">
-                                        <input 
-                                            ref={countryRef}
-                                            type="text" 
-                                            class="form-control" 
-                                            placeholder="Enter your Country" 
-                                            required/>
+                                    <div class="form-outline mb-4" style={{ position: 'relative' }}>
+                                        <input
+                                            name="country"
+                                            value={Country}
+                                            onChange={(e) => {
+                                                setCountry(e.target.value)
+                                                console.log(Country)
+                                                countries("Fr")
+                                                console.log(array);
+                                            }}
+                                            type="text"
+                                            class="form-control"
+                                            placeholder="Enter your Country"
+                                            required={isRequired}
+                                        />
+                                        <Options 
+                                            countries = {array}
+                                        />
                                     </div>
 
                                     <div class="row">
                                         <div class="col-md-6 mb-4">
                                             <div class="form-outline">
-                                                <input 
-                                                    ref={street1Ref}
-                                                    type="text" 
-                                                    class="form-control" 
-                                                    placeholder="Street 1" 
-                                                    required/>
+                                                <input
+                                                    name="street1"
+                                                    value={Street1}
+                                                    onChange={(e) => setStreet1(e.target.value)}
+                                                    type="text"
+                                                    class="form-control"
+                                                    placeholder="Street 1"
+                                                    required={isRequired}
+                                                />
                                             </div>
                                         </div>
                                         <div class="col-md-6 mb-4">
                                             <div class="form-outline">
-                                                <input 
-                                                    ref={street2Ref}
-                                                    type="text" 
-                                                    class="form-control" 
-                                                    placeholder="Street 2" 
-                                                    required/>
+                                                <input
+                                                    name="street2"
+                                                    value={Street2}
+                                                    onChange={(e) => setStreet2(e.target.value)}
+                                                    type="text"
+                                                    class="form-control"
+                                                    placeholder="Street 2"
+                                                    required={isRequired}
+                                                />
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="form-outline mb-4">
-                                        <input 
-                                            ref={cityRef}
-                                            type="text" 
-                                            class="form-control" 
-                                            placeholder="Enter your City" 
-                                            required/>
+                                    <div class="form-outline mb-4" style={{ position: 'relative' }}>
+                                        <input
+                                            name="city"
+                                            value={City}
+                                            onChange={(e) => setCity(e.target.value)}
+                                            type="text"
+                                            class="form-control"
+                                            placeholder="Enter your City"
+                                            required={isRequired}
+                                        />
+                                        {/* <Options /> */}
                                     </div>
 
                                     <div class="form-outline mb-4">
-                                        <input type="text" class="form-control" placeholder="State" />
+                                        <input
+                                            name="state"
+                                            value={State}
+                                            onChange={(e) => setState(e.target.value)}
+                                            type="text"
+                                            class="form-control"
+                                            placeholder="State" />
                                     </div>
 
                                     <div class="form-outline mb-4">
-                                        <input type="text" class="form-control" placeholder="Zip" />
+                                        <input
+                                            name="zip"
+                                            value={Zip}
+                                            onChange={(e) => setZip(e.target.value)}
+                                            type="text"
+                                            class="form-control"
+                                            placeholder="Zip" />
                                     </div>
 
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <button 
-                                                type="submit" 
+                                            <button
+                                                type="submit"
                                                 class="btn btn-light btn-block mb-4 w-100"
-                                                onClick={()=> {props.prevClick()}}
-                                                >
+                                                onClick={() => { props.prevClick() }}
+                                            >
                                                 Go Back
                                             </button>
                                         </div>
                                         <div class="col-md-6 ">
-                                            <button 
+                                            <button
                                                 type="submit"
                                                 class="btn btn-primary mb-4 w-100"
-                                                onClick={()=> {validation()}}
-                                                >
+                                            >
                                                 Continue
                                             </button>
                                         </div>
@@ -111,9 +180,8 @@ const Step2 = (props) => {
                         </div>
 
                     </div>
-                </div>
-            </div>
-        </section>
+                </div> : null}
+        </>
     )
 }
 

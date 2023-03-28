@@ -8,11 +8,15 @@ import ProductScreen from './screens/ProductScreen';
 import CartScreen from './screens/CartScreen';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen'
+import UserScreen from './screens/UserScreen'
 
 //Components
 import Navbar from './components/Navbar';
 import Backdrop from './components/Backdrop';
 import SideDrawer from './components/SideDrawer';
+
+import Newsletter from "./components/Newsletter"
+import Footer from './components/Footer';
 
 function App() {
 
@@ -24,22 +28,29 @@ function App() {
 
   return (
     <Router>
-    <Navbar handleClick={()=>{
-      renderSidebar()
-    }} />
-    <SideDrawer show={sideToggle} />
-    <Backdrop show={sideToggle} handleClick={()=>{
-      setsideToggle(false);
-    }} />
-      <main>
-        <Switch>
-         <Route exact path="/" component={HomeScreen}/>
-         <Route exact path="/product/:id" component={ProductScreen}/>
-         <Route exact path="/cart" component={CartScreen}/>
-         <Route exact path="/login" component={LoginScreen}/>
-         <Route exact path="/register" component={RegisterScreen}/>
-        </Switch>
-      </main>
+      <Newsletter/> 
+      <Navbar handleClick={()=>{
+        renderSidebar()
+      }} 
+      removeSidebar={()=>{
+        setsideToggle(false);
+      }}
+      />
+      <SideDrawer show={sideToggle} />
+      <Backdrop show={sideToggle} handleClick={()=>{
+        setsideToggle(false);
+      }} />
+        <main>
+          <Switch>
+          <Route exact path="/" component={HomeScreen}/>
+          <Route exact path="/product/:id" component={ProductScreen}/>
+          <Route exact path="/cart" component={CartScreen}/>
+          <Route exact path="/login" component={LoginScreen}/>
+          <Route exact path="/register" component={RegisterScreen}/>
+          <Route exact path="/user" component={UserScreen}/>
+          </Switch>
+        </main>
+      <Footer/>
     </Router>
   );
 }

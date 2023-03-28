@@ -21,8 +21,13 @@ const HomeScreen = () => {
     dispatch(listProducts());
   }, [dispatch]);
 
-
   return (
+    <>
+    
+    <form id="search2" class="d-flex col-10 mt-2" style={{"position": "relative", "margin": "0 auto"}}>
+      <input class="form-control" style={{"position": "relative"}} type="search" placeholder="Enter a keyword..."/>
+    </form> 
+
     <div className="homescreen">
       <h2 className="homescreen__title"> Latest Products</h2>
         {loading ? (
@@ -36,6 +41,7 @@ const HomeScreen = () => {
           <h2> {error} </h2>
         ) : (
         <div className="homescreen__products"> 
+          {localStorage.getItem('email')}
           {
             products.map((product, id) => { 
               return (
@@ -53,6 +59,7 @@ const HomeScreen = () => {
           </div>
         )}
       </div>
+      </>
   );
 };
 

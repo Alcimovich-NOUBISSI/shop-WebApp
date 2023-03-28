@@ -1,4 +1,5 @@
 .homescreen{
+    position: relative;
     max-width: 1300px;
     margin: 1rem auto;
 }
@@ -15,3 +16,10 @@
     grid-template-columns: repeat(auto-fill,minmax(335px, 1fr));
     margin: 10px;
 }
+
+
+@media (min-width : 577px) {
+    #search2 {
+      visibility: hidden;
+    }
+  }
