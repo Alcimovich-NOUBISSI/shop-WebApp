@@ -32,7 +32,7 @@ const Step1 = (props) => {
     }
 
     const [check, setCheck] = useState(true)
-    
+
 
     return (
         <>
@@ -121,24 +121,26 @@ const Step1 = (props) => {
                                                 Continue
                                             </button> */}
                                     </div>
-
-                                    <div className="">
-                                        <div className=" text-start">
-                                            <label>Already have an account? <Link to="/login"> Sign In </Link> </label>
-                                        </div>
-                                        <div className="text-end">
-                                            <input 
-                                                class="form-check-input me-2" 
-                                                type="checkbox" 
-                                                value="" 
-                                                id="form2Example33"
-                                                onClick={()=> setCheck(!check)} 
-                                                checked = {check} />
-                                            <label class="form-check-label" for="form2Example33">
-                                                Subscribe to our newsletter
-                                            </label>
+                                    <div className="container">
+                                        <div className="row">
+                                            <div className="col-sm-6 col-xs-12 text-start">
+                                                <label>Already have an account? <Link to="/login"> Sign In </Link> </label>
+                                            </div>
+                                            <div className="col-sm-6 col-xs-12 text-end">
+                                                <input
+                                                    class="form-check-input me-2"
+                                                    type="checkbox"
+                                                    value=""
+                                                    id="form2Example33"
+                                                    onClick={() => setCheck(!check)}
+                                                    checked={check} />
+                                                <label class="form-check-label" for="form2Example33">
+                                                    Subscribe to our newsletter
+                                                </label>
+                                            </div>
                                         </div>
                                     </div>
+
 
                                 </form>
                             </div>
