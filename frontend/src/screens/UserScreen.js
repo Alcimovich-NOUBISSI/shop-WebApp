@@ -11,24 +11,21 @@ const UserScreen = () => {
 
   const [option, setOption] = useState(0)
 
-  function ff () {
-    console.log('ff function')
-  }
 
   return (
-    <div className="row">
+    <div className="row m-0 user">
       <aside className="user_menu">
         <ul>
-          <li><button onClick={()=> setOption(0)} > Edit Info</button> </li>
-          <li><button onClick={()=> setOption(1)}> Orders List</button> </li>
+          <li><p onClick={()=> setOption(0)}><i class="fa fa-thin fa-user-pen"></i> Edit Info</p> </li>
+          <li><p onClick={()=> setOption(1)}><i class="fa fa-thin fa-list"></i> Orders List</p> </li>
         </ul>
       </aside>
       
       <div className="user_body">
         <form className="mb-4" >
-          <select onChange={(e) => {setOption(e.target.value); ff() }} className="user_option p-2">
-            <option value={0}>Edit Info</option>
-            <option value={1}>Orders List</option>
+          <select onChange={(e) => {setOption(e.target.value)}} className="user_option p-2">
+            <option value="0">Edit Info</option>
+            <option value="1">Orders List</option>
           </select>
         </form>
         {

@@ -1,7 +1,4 @@
-*{
-    margin: 0;
-    padding: 0
-}
+
 
 .SideDrawer a{
     color: black;
@@ -12,8 +9,12 @@
 .SideDrawer{
     width: 70%;
     height: 100vh;
-    background: #fff;
+    background-color: rgb(173, 198, 173);
     position: fixed;
+    display: flex;
+    align-items:flex-start;
+    justify-content: center;
+    padding-top: 40px;
     top: 0;
     left: 0;
     z-index: 1000;
@@ -21,38 +22,38 @@
     transition: all .3s ease-out;
 }
 
+.SideDrawer p {
+    text-align: center;
+    padding: 10px;
+    user-select: none;
+    margin: 0;
+}
+
 .show{
     transform: translateX(0);
 }
 
-.SideDrawer__links{
-    margin: 70px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.SideDrawer__links ul {
-    height: 70px;
+.SideDrawer ul {
+    width: 100%;
     color: black;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    margin: 0;
+    padding: 0;
 }
 
-.SideDrawer__links ul li{
-    list-style: none;
+.SideDrawer ul li {
+    margin-top: 10px;
+    width: 90%;
+    background-color: rgb(255 255 255 / 0.2);
+    backdrop-filter: blur(10px);
 }
 
-.SideDrawer__links ul li a{
-    display: flex;
-    flex-direction: row;
-}
-
-.SideDrawer__links ul>li a:hover {
-    border: 1px solid black;
-    background-color: grey;
+.SideDrawer ul li:hover {
+    background-color: rgb(255 255 255 / 0.7);
+    backdrop-filter: blur(10px);
 }
 
 .SideDrawer__cartlogo{

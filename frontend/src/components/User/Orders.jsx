@@ -25,10 +25,10 @@ const Orders = () => {
             >
               <div className="header">
                 <p> Id: 321546 </p>
-                <p class="badge rounded-pill bg-dark">$230 </p>
+                <p class="badge rounded-pill bg-success">pending</p>
                 <p> 2/03/2023</p>
                 <p>UPS</p>
-                <p class="badge rounded-pill bg-success">pending</p>
+                <p class="badge rounded-pill bg-dark">$230 </p>
               </div>
             </div>
           </div>

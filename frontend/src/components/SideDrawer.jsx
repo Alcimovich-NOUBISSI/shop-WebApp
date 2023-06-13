@@ -21,25 +21,35 @@ const SideDrawer = (props) => {
 
   return (
     <div className={sideDrawerClass.join(" ")}>
-      <div className="SideDrawer__links">
         <ul>
           <li>
-            <Link to="/cart">
-              Cart
-              <span className="SideDrawer__cartlogo"> {getCartPrice()} </span>
-            </Link>
+            <p>
+              <i class="fa fa-cart-shopping me-3"></i>
+              <Link to="/cart">
+                Cart
+              </Link>
+              {getCartPrice()}
+            </p>
           </li>
           <li>
-            <Link to="/shop"> Shop </Link>
+            <p>
+            <i class="fa fa-shop me-3"></i>
+              <Link to="/shop"> Shop </Link>
+            </p>
           </li>
           <li>
-            <Link to="/user"> User </Link>
+            <p>
+              <i class="fa fa-user me-3"></i>
+              <Link to="/user"> User </Link>
+            </p>
           </li>
           <li>
-            <Link to="/"> Log Out </Link>
+            <p>
+              <i class="fa fa-arrow-right-from-bracket me-3"></i>
+              <Link to="/"> Log Out </Link>
+            </p>
           </li>
         </ul>
-      </div>
     </div>
   );
 };

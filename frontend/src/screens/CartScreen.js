@@ -201,9 +201,6 @@ const CartScreen = ({ match }) => {
 
           </div>
 
-
-
-
           <div class="cartscreen__right">
             {
               (cartItems.length === 0) ?

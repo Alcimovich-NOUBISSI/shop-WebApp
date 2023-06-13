@@ -73,9 +73,9 @@ const RegisterScreen = () => {
     <section id="register">
       <div className="container px-4 px-md-5 pt-5 text-center text-lg-start position-relative">
         <div className="steps">
-          <span className="rounded-5 p-3" style={(step > 0 ) ? {backgroundColor: '#008cba'} : {backgroundColor: 'gray'}}></span>
-          <span className="rounded-5 p-3" style={(step > 1 ) ? {backgroundColor: '#008cba'} : {backgroundColor: 'gray'}}></span>
-          <span className="rounded-5 p-3" style={(step > 2 ) ? {backgroundColor: '#008cba'} : {backgroundColor: 'gray'}}></span>
+          <span className="rounded-5 p-2" style={(step > 0 ) ? {backgroundColor: '#008cba'} : {backgroundColor: 'gray'}}></span>
+          <span className="rounded-5 p-2" style={(step > 1 ) ? {backgroundColor: '#008cba'} : {backgroundColor: 'gray'}}></span>
+          <span className="rounded-5 p-2" style={(step > 2 ) ? {backgroundColor: '#008cba'} : {backgroundColor: 'gray'}}></span>
         </div>
 
         {

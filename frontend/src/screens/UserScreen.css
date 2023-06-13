@@ -13,10 +13,33 @@
     width: 100%;
 }
 
-.user_menu {
-    background-color: rgb(215, 207, 207);
-    width: 20%;
+.user {
+    position: relative;
     height: 100vh;
+}
+
+.user_menu {
+    display: inline-block;
+    position: absolute;
+    height: 100%;
+    background-color: rgb(173, 198, 173);
+    width: 20%;
+    padding-top: 70px;
+    top: 0;
+    bottom: 0;
+}
+
+.user_menu p {
+    text-align: center;
+    padding: 10px;
+    user-select: none;
+    background-color: rgb(255 255 255 / 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.user_menu p:hover {
+    background-color: rgb(255 255 255 / 0.7);
+    backdrop-filter: blur(10px);
 }
 
 .user_body {
@@ -25,7 +48,7 @@
     padding: 20px;
 }
 
-@media (max-width : 577px) {
+@media (max-width : 730px) {
     .user_menu {
         display: none;
     }
@@ -37,7 +60,7 @@
     }
 }
 
-@media (min-width : 577px) {
+@media (min-width : 730px) {
     .user_option {
         display: none;
     }
