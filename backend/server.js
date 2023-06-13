@@ -32,7 +32,7 @@ app.post('/postSomething', (req, res)=>{
     res.send("ok")
 })
 
-/*if(process.env.ENVIRONMENT === "production") {
+if(process.env.ENVIRONMENT === "production") {
     app.use(express.static(path.join(__dirname, '/public')))
     app.get('*', (req,res) => {
         res.sendFile(path.join(__dirname, '/public', 'index.html' ))
@@ -41,9 +41,4 @@ app.post('/postSomething', (req, res)=>{
     app.get('*', (req,res)=>{
         res.send('Api running')
     })
-}*/
-
-app.use(express.static(path.join(__dirname, '/public')))
-    app.get('*', (req,res) => {
-        res.sendFile(path.join(__dirname, '/public', 'index.html' ))
-    })
+}
