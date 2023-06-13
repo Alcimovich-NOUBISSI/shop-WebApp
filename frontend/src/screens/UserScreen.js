@@ -16,7 +16,7 @@ const UserScreen = () => {
   }
 
   return (
-    <div className="row">
+    <div className="row m-0">
       <aside className="user_menu">
         <ul>
           <li><button onClick={()=> setOption(0)} > Edit Info</button> </li>
