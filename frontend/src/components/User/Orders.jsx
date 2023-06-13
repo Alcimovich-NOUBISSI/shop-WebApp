@@ -48,7 +48,7 @@ const Orders = () => {
                   />
                 );
               })}
-              <button onClick={() => handleCancelation}>Cancel</button>
+              <button onClick={() => handleCancelation}>Close</button>
             </div>
           </div>
         </div>
