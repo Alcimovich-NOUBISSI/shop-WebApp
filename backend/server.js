@@ -33,12 +33,12 @@ app.post('/postSomething', (req, res)=>{
 })
 
 if(process.env.ENVIROMENT === "production") {
-    app.use(express.static(path.join(__dirname, '/build')))
+    app.use(express.static(path.join(__dirname, '/public')))
     app.get('*', (req,res) => {
-        res.sendFile(path.join(__dirname, 'build', 'index.html' ))
+        res.sendFile(path.join(__dirname, '/public', 'index.html' ))
     })
 } else {
-    app.get('/', (req,res)=>{
+    app.get('*', (req,res)=>{
         res.send('Api running')
     })
 }
