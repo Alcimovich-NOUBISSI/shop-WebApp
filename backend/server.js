@@ -32,7 +32,7 @@ app.post('/postSomething', (req, res)=>{
     res.send("ok")
 })
 
-if(process.env.ENVIROMENT === "production") {
+if(process.env.ENVIRONMENT === "production") {
     app.use(express.static(path.join(__dirname, '/public')))
     app.get('*', (req,res) => {
         res.sendFile(path.join(__dirname, '/public', 'index.html' ))
