@@ -8,13 +8,13 @@ const login = async (req, res) => {
     try {
 
         const user = await User.findOne({ email: req.body.email })
-        console.log(user)
         if (!user) {
             res.status(400)
                 .json({ message: "user doesn't exists" })
         } else if (await bcrypt.compare(req.body.password, user.hashedAndSaltedPassword)) {
-            console.log('logged in')
-            res.json({email : req.body.email})
+            //console.log('logged in')
+            //res.json({email : req.body.email})
+            res.redirect("/register")
 
         } else if (!await bcrypt.compare(req.body.password, user.hashedAndSaltedPassword)) {
             res.json({ message : 'bad password' })
@@ -32,9 +32,10 @@ const register = async (req, res) => {
 
         const user = await User.findOne({ email: data.email })
 
+        console.log(user);
+
         if (user) {
-            res.status(400)
-                .json({ message: "user already exists" })
+            res.json({ message: "user already exists" })
         }
         const encryptedpassword = await bcrypt.hash(data.password, 10)
 
@@ -79,13 +80,15 @@ const register = async (req, res) => {
             email: data.email,
         })
 
-        newUser.save((error) => {
+        newUser.save()
+
+        /*(error) => {
             if (error) {
                 console.log(error)
             }
-        })
+        }*/
 
-        res.json({ "email": req.body.email })
+        /*res.json({ "email": req.body.email })*/
 
     } catch (err) {
         console.error(err);
