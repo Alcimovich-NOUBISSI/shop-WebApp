@@ -12,7 +12,7 @@ const Navbar = (props) => {
     <>
     <nav class="navbar navbar-expand-lg navbar-light bg-primary">
       <div class="container-fluid">
-        <Link class="navbar-brand col-3" to="/">Steve Store</Link>
+        <Link class="navbar-brand col-3" to="/">Steve  Store</Link>
         <form id="search1" class="d-flex col-6" style={{"visibility": "none !important"}} >
             <input class="form-control" type="search" placeholder="Enter a keyword..."/>
             <button class="btn btn-dark my-2 my-sm-0" type="submit">Search</button>
