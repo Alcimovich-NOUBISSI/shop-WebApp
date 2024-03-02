@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const connectDB= require('./config/db');
 const productRoutes = require('./routes/productRoutes');
-//const userRoutes = require('./routes/userRoutes');
+const userRoutes = require('./routes/userRoutes');
 const orderRoutes = require('./routes/orderRoutes');
 
 
