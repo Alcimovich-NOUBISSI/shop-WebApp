@@ -10,24 +10,24 @@ const LoginScreen = () => {
   
   const [mail, setMail]= useState("")
   const [pwd, setPwd]= useState("")
-
   const handleLogin = () => {
     axios.post('/login', {
       "email": mail,
       "password": pwd
     }).then((res) => {
-      console.log(res.data.email);
       localStorage.setItem({
         "email": res.data.email
       })
+      if (res.status === 303) {
+        axios.get("/")
+      }
+
     }).catch((err) => console.log(err))
   }
-
   const [check, setCheck] = useState(true)
 
   return (
     <section id="login" class="background-radial-gradient overflow-hidden">
-
       <div class="container px-4 px-md-5 text-center text-lg-start ">
         <div class="row gx-lg-5 align-items-center ">
           <div class="col-lg-6  mb-lg-0">

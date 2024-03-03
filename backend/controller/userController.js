@@ -12,9 +12,9 @@ const login = async (req, res) => {
             res.status(400)
                 .json({ message: "user doesn't exists" })
         } else if (await bcrypt.compare(req.body.password, user.hashedAndSaltedPassword)) {
-            //console.log('logged in')
+            console.log('logged in')
             //res.json({email : req.body.email})
-            res.redirect("/register")
+            res.status(303).send({message: "logged in"})
 
         } else if (!await bcrypt.compare(req.body.password, user.hashedAndSaltedPassword)) {
             res.json({ message : 'bad password' })
@@ -81,6 +81,7 @@ const register = async (req, res) => {
         })
 
         newUser.save()
+        console.log("user saved");
 
         /*(error) => {
             if (error) {
